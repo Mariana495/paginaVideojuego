@@ -1,0 +1,36 @@
+﻿/* Split the screen */
+.split {
+    height: 88%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+    left: 0;
+    width: 30%;
+    background-color: #d5d5d5; /* gris claro */
+}
+
+/* Control the right side */
+.right {
+    right: 0;
+    width: 70%;
+    background-color: #5e5e5e; /* gris MÁS oscuro */
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}

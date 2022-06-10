@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\paginaVideojuego\\paginaVideojuego\\paginaVideojuego.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\Source\\Repos\\paginaVideojuego3\\paginaVideojuego\\paginaVideojuego.csproj",
       "projectName": "paginaVideojuego",
-      "projectPath": "C:\\Users\\hp\\source\\repos\\paginaVideojuego\\paginaVideojuego\\paginaVideojuego.csproj",
+      "projectPath": "C:\\Users\\hp\\Source\\Repos\\paginaVideojuego3\\paginaVideojuego\\paginaVideojuego.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\source\\repos\\paginaVideojuego\\paginaVideojuego\\obj\\",
+      "outputPath": "C:\\Users\\hp\\Source\\Repos\\paginaVideojuego3\\paginaVideojuego\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
