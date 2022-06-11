@@ -6,14 +6,15 @@
     País: MÉXICO <br/>
     Desde: 2022 <br/>
     Minutos jugados: -- <br/><br/>
-    <button style = "background-color: #00a1ff" class = "btn btn-lg">
-         Editar perfil
-    </button>
+
+    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
+         <a asp-controller = "Home" asp-action = "EditarPerfil" asp-route-id = "" class="link-dark"> Editar perfil </a>
+    </button> 
   </div>
 </div>
 
 <div class="split right">
-  <h1 style = "text-align: center; color: #d5d5d5"> <b>Historial de partidas </b> </h1>    
+  <h1 style = "text-align: center; color: #ffda33"> <b>Historial de partidas </b> </h1>  
   <br />
   <div class="centered">
     <table class = "center" style = "width: 560px; font-size: 20px">
@@ -23,7 +24,7 @@
             <th style = "text-align: center; color: black"> FECHA </th>
         </tr>
         <tr style = "color: white">
-            <td> 945 </t>
+            <td> 945 </td>
             <td> 10:43 </td>
             <td> 15-03-2022 </td>
         </tr>

@@ -41,6 +41,11 @@ namespace paginaVideojuego.Controllers
             return View();
         }
 
+        public IActionResult EditarPerfil()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             //HttpContext.Session.SetString("username", "mar");
