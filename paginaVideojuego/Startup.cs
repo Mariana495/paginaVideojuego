@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using paginaVideojuego.Models;
 
 namespace paginaVideojuego
 {
@@ -22,6 +23,7 @@ namespace paginaVideojuego
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<GrandTecAutoContext>();
             services.AddControllersWithViews();
 
             services.AddDistributedMemoryCache();

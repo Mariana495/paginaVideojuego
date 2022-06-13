@@ -1,18 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using paginaVideojuego.Models;
+using System.Linq;
 
 namespace paginaVideojuego.Controllers
 {
     public class UserApiController : Controller
     {
         // GET: UserApiController
-        public ActionResult Index()
+        static List<UsuarioModel> jugadores = new List<UsuarioModel>();
+        
+        private readonly GrandTecAutoContext database;
+
+        public UserApiController(GrandTecAutoContext database)
+        {
+            this.database = database;
+        }
+
+        public ActionResult Juega()
         {
             return View();
         }
 
         // GET: UserApiController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Instrucciones()
         {
             return View();
         }
@@ -23,6 +35,13 @@ namespace paginaVideojuego.Controllers
             return View();
         }
 
+        public ActionResult Records()
+        {
+            var users = database.Usuarios.ToList();
+
+            return View(users);
+        }
+
         // POST: UserApiController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -30,7 +49,7 @@ namespace paginaVideojuego.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Juega));
             }
             catch
             {
@@ -51,7 +70,7 @@ namespace paginaVideojuego.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Juega));
             }
             catch
             {
@@ -72,7 +91,7 @@ namespace paginaVideojuego.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Juega));
             }
             catch
             {

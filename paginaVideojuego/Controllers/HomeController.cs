@@ -1,5 +1,6 @@
 ﻿//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using paginaVideojuego.Models;
 using System;
@@ -12,14 +13,14 @@ namespace paginaVideojuego.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        static List<UsuarioModel> jugadores = new List<UsuarioModel>();
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly GrandTecAutoContext database;
+
+        public HomeController(GrandTecAutoContext database)
         {
-            _logger = logger;
+            this.database = database;
         }
-
-
 
         public IActionResult Juega()
         {
@@ -33,7 +34,10 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Records()
         {
-            return View();
+            var sql = "SELECT * FROM top100_partidas()";
+            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
+
+            return View(result);
         }
 
         public IActionResult Perfil()
@@ -52,7 +56,7 @@ namespace paginaVideojuego.Controllers
             //HttpContext.Session.SetInt32("username", "mar");
 
             return View();
-            
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<PartidaN>
 
 <h1 style = "color: #0276ba; text-align: center"><b> RÉCORDS </b></h1>
 
@@ -11,19 +11,16 @@
             <th style = "text-align: center"> <h3> Tiempo </h3> </th>
             <th style = "text-align: center"> <h3> Fecha </h3> </th>
         </tr>
-        <tr>
-            <td> usuario </td>
-            <td> 1 </td>
-            <td> 1528 </td>
-            <td> 15:33 </td>
-            <td> 15-03-2022 </td>
-        </tr>
-        <tr>
-            <td> usuario2 </td>
-            <td> 2 </td>
-            <td> 1433 </td>
-            <td> 15:12 </td>
-            <td> 15-03-2022 </td>
-        </tr>
+
+       @foreach(var user in Model){
+           <tr>
+                <td> @user.NombreUsuario </td>
+                <td> 1 </td>
+                <td> @user.PuntajePartida </td>
+                <td> @user.DuracionMinutosPartida </td>
+                <td> @user.FechaPartida </td>
+            </tr>
+       }
+
     </table> 
 </div>
