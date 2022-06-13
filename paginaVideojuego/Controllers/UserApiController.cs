@@ -74,9 +74,9 @@ namespace paginaVideojuego.Controllers
                 });
             }
 
+            
 
-
-            var sql = $"call create_user('{usuario.NombreUsuario}'::)";
+            var sql = $"call agregar_usuario('{usuario.NombreUsuario}'::)";
 
             var random = new System.Random();
 
@@ -146,7 +146,7 @@ namespace paginaVideojuego.Controllers
         }
 
         [HttpDelete("{IdUsuario}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, [FromBody] Usuario usuario)
         {
             var usuarios = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
@@ -154,6 +154,8 @@ namespace paginaVideojuego.Controllers
             {
                 return NotFound();
             }
+
+            var sql = $"call eliminar_usuario('{usuario.NombreUsuario}'::)";
 
             database.Usuarios.Remove(usuarios);
 

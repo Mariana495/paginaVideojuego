@@ -59,6 +59,26 @@ namespace paginaVideojuego.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult Login(Usuario usuario)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Faltan datos";
+                return View(usuario);
+            }
+
+            var random = new System.Random();
+
+            usuario.IdUsuario = random.Next();
+
+            database.Usuarios.Add(usuario);
+
+            database.SaveChanges();
+
+            return RedirectToAction("Juega");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
