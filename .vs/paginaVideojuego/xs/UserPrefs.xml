@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Controllers/UserApiController.cs">
+    <Files>
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="paginaVideojuego" expanded="True">
+            <Node name="paginaVideojuego" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="UserApiController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.paginaVideojuego PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

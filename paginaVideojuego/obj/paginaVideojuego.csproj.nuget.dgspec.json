@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\source\\repos\\paginaVideojuego4\\paginaVideojuego\\paginaVideojuego.csproj": {}
+    "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\source\\repos\\paginaVideojuego4\\paginaVideojuego\\paginaVideojuego.csproj": {
+    "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\source\\repos\\paginaVideojuego4\\paginaVideojuego\\paginaVideojuego.csproj",
+        "projectUniqueName": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
         "projectName": "paginaVideojuego",
-        "projectPath": "C:\\Users\\hp\\source\\repos\\paginaVideojuego4\\paginaVideojuego\\paginaVideojuego.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\source\\repos\\paginaVideojuego4\\paginaVideojuego\\obj\\",
+        "projectPath": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
+        "packagesPath": "/Users/joseandreslozano/.nuget/packages/",
+        "outputPath": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/joseandreslozano/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -71,6 +69,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[5.0.16, 5.0.16]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -79,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
