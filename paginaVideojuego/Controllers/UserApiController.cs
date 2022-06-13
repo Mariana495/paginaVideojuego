@@ -13,90 +13,154 @@ namespace paginaVideojuego.Controllers
         
         private readonly GrandTecAutoContext database;
 
+        public const int EMPTY_NAME = 100;
+        public const int EMPTY_PASSWORD = 101;
+        public const int EMPTY_CONTINENT = 102;
+        public const int EXISTENT_NAME = 103;
+        public const int MISMATCHED_IDS = 104;
+
         public UserApiController(GrandTecAutoContext database)
         {
             this.database = database;
         }
 
-        public ActionResult Juega()
+        [HttpGet]
+        public IEnumerable<Usuario> Records()
         {
-            return View();
+            return database.Usuarios.ToList();
         }
 
-        // GET: UserApiController/Details/5
-        public ActionResult Instrucciones()
+        [HttpGet("{IdUsuario}")]
+        public IActionResult Perfil(int id)
         {
-            return View();
-        }
+            var usuario = database.Usuarios.SingleOrDefault(row => row.IdUsuario == id);
 
-        // GET: UserApiController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+            if (usuario == null)
+            {
+                return NotFound();
+            }
 
-        public ActionResult Records()
-        {
-            var users = database.Usuarios.ToList();
-
-            return View(users);
+            return Ok(usuario);
         }
 
         // POST: UserApiController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create([FromBody] Usuario usuario)
         {
-            try
+            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
             {
-                return RedirectToAction(nameof(Juega));
+                return BadRequest(new
+                {
+                    error = "Empty name",
+                    code = EMPTY_NAME
+                });
             }
-            catch
+
+            if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
             {
-                return View();
+                return BadRequest(new
+                {
+                    error = "Empty password",
+                    code = EMPTY_PASSWORD
+                });
             }
+
+            if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
+            {
+                return BadRequest(new
+                {
+                    error = "Empty continent",
+                    code = EMPTY_CONTINENT
+                });
+            }
+
+
+
+            var sql = $"call create_user('{usuario.NombreUsuario}'::)";
+
+            var random = new System.Random();
+
+            usuario.IdUsuario = random.Next();
+
+            database.Usuarios.Add(usuario);
+
+            database.SaveChanges();
+
+            return Ok();
         }
 
-        // GET: UserApiController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT: UserApiController/Edit/5
+        [HttpPut("{IdUsuario}")]
+        public IActionResult Edit(int id, [FromBody] Usuario editarUsuario)
         {
-            return View();
+            if (editarUsuario.IdUsuario != id)
+            {
+                return BadRequest(new
+                {
+                    error = "Las Id no coinciden",
+                    code = MISMATCHED_IDS
+                });
+            }
+
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            if (usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
+            {
+                return BadRequest(new
+                {
+                    error = "Empty name",
+                    code = EMPTY_NAME
+                });
+            }
+
+            if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
+            {
+                return BadRequest(new
+                {
+                    error = "Empty password",
+                    code = EMPTY_PASSWORD
+                });
+            }
+
+            if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
+            {
+                return BadRequest(new
+                {
+                    error = "Empty continent",
+                    code = EMPTY_CONTINENT
+                });
+            }
+
+            usuario.NombreUsuario = editarUsuario.NombreUsuario;
+            usuario.ClaveUsuario = editarUsuario.ClaveUsuario;
+            usuario.ContinenteUsuario = editarUsuario.ContinenteUsuario;
+
+            database.SaveChanges();
+
+            return Ok();
         }
 
-        // POST: UserApiController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpDelete("{IdUsuario}")]
+        public IActionResult Delete(int id)
         {
-            try
+            var usuarios = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+
+            if (usuarios == null)
             {
-                return RedirectToAction(nameof(Juega));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+
+            database.Usuarios.Remove(usuarios);
+
+            database.SaveChanges();
+
+            return Ok();
         }
 
-        // GET: UserApiController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UserApiController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Juega));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
