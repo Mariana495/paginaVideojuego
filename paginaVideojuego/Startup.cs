@@ -24,9 +24,11 @@ namespace paginaVideojuego
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GrandTecAutoContext>();
+
             services.AddControllersWithViews();
 
             services.AddDistributedMemoryCache();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(6000);

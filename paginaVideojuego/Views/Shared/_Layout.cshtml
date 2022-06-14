@@ -33,9 +33,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Perfil">Perfil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
+                        @{
+                            var NombreUsuario = (string)ViewData["NombreUsuario"];
+                        }
+                        @if (string.IsNullOrEmpty(NombreUsuario))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -44,6 +56,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            @RenderSection("login", required: false)
         </main>
     </div>
 

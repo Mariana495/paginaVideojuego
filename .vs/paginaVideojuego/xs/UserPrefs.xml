@@ -1,17 +1,15 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Records.cshtml">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="162" Column="64" />
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="120" Column="46" />
-      <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="21" Column="46" />
-      <File FileName="paginaVideojuego/Models/UsuarioModel.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Models/PartidaN.cs" Line="12" Column="52" />
-      <File FileName="paginaVideojuego/Models/Usuario.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Models/Partida.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="13" Column="15" />
-      <File FileName="paginaVideojuego/Models/ErrorViewModel.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="34" Column="30" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="124" Column="1" />
+      <File FileName="paginaVideojuego/Startup.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="36" Column="22" />
+      <File FileName="paginaVideojuego/Views/Shared/_Layout.cshtml" Line="50" Column="26" />
+      <File FileName="paginaVideojuego/Views/Home/Juega.cshtml" Line="9" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="47" Column="6" />
+      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="50" Column="2" />
+      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="64" Column="2" />
+      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="37" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,8 +26,9 @@
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True">
-                  <Node name="Login.cshtml" selected="True" />
+                  <Node name="Records.cshtml" selected="True" />
                 </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>

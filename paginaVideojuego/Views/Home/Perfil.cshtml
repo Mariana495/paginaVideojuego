@@ -1,5 +1,10 @@
 ﻿@model Usuario
 
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div class="split left">
   <div class="centered">
     <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
@@ -51,3 +56,14 @@
       </table>
   </div>
 </div>
+
+@section login {
+    @if(ViewData["NombreUsuario"] == null)
+    {
+        <li> Login </li>
+    }
+    else
+    {
+        <li> Logout </li>
+    }
+}

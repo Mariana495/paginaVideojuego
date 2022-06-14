@@ -24,6 +24,18 @@ namespace paginaVideojuego.Controllers
             this.database = database;
         }
 
+        public string Get()
+        {
+            var NombreUsuario = HttpContext.Session.GetString("NombreUsuario");
+
+            if(NombreUsuario == null)
+            {
+                return "no-session";
+            }
+
+            return NombreUsuario;
+        }
+
         [HttpGet]
         public IEnumerable<Usuario> Records()
         {

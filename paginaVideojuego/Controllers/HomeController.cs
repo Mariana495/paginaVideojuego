@@ -1,4 +1,4 @@
-﻿//using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,27 +13,32 @@ namespace paginaVideojuego.Controllers
 {
     public class HomeController : Controller
     {
-        static List<UsuarioModel> jugadores = new List<UsuarioModel>();
+        //static List<UsuarioModel> jugadores = new List<UsuarioModel>();
 
         private readonly GrandTecAutoContext database;
+        public readonly ILogger<HomeController> _logger;
 
-        public HomeController(GrandTecAutoContext database)
+        public HomeController(GrandTecAutoContext database, ILogger<HomeController> logger)
         {
             this.database = database;
+            _logger = logger;
         }
 
         public IActionResult Juega()
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             return View();
         }
 
         public IActionResult Instrucciones()
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             return View();
         }
 
         public IActionResult Records()
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             var sql = @"SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida
 
                         FROM partidas AS part
@@ -48,6 +53,7 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Perfil(int id)
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if (usuario == null)
@@ -66,6 +72,7 @@ namespace paginaVideojuego.Controllers
         [HttpGet]
         public IActionResult EditarPerfil(int id)
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if(usuario == null)
@@ -80,6 +87,7 @@ namespace paginaVideojuego.Controllers
         [HttpPost]
         public IActionResult EditarPerfil(Usuario cambioDatosUsuario)
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             if (!ModelState.IsValid)
             {
                 TempData["Error"] = "Hubo un error en el modelo";
@@ -105,6 +113,7 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Delete(int id)
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if (usuario == null)
@@ -122,6 +131,13 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Login()
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            var random = new Random();
+
+            if(HttpContext.Session.GetString("NombreUsuario") == null)
+            {
+                HttpContext.Session.SetString("NombreUsuario", "CJ" + random.Next().ToString());
+            }
             //HttpContext.Session.SetString("username", "mar");
             //HttpContext.Session.SetInt32("username", "mar");
 
@@ -132,6 +148,8 @@ namespace paginaVideojuego.Controllers
         [HttpPost]
         public IActionResult Login(Usuario usuario)
         {
+            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+
             if (!ModelState.IsValid)
             {
                 TempData["Error"] = "Faltan datos";
