@@ -141,6 +141,7 @@ C:/Users/hp/source/repos/paginaVideojuego4/paginaVideojuego/bin/Debug/net5.0/Sys
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.runtimeconfig.json
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.runtimeconfig.dev.json
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.dll
+/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/ref/paginaVideojuego.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.pdb
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.Views.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego.Views.pdb
@@ -153,7 +154,6 @@ C:/Users/hp/source/repos/paginaVideojuego4/paginaVideojuego/bin/Debug/net5.0/Sys
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/Npgsql.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
-/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.csproj.AssemblyReference.cache
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.GeneratedMSBuildEditorConfig.editorconfig
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.AssemblyInfoInputs.cache
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.AssemblyInfo.cs
@@ -182,8 +182,6 @@ C:/Users/hp/source/repos/paginaVideojuego4/paginaVideojuego/bin/Debug/net5.0/Sys
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.Views.pdb
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.csproj.CopyComplete
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.dll
+/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/ref/paginaVideojuego.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.pdb
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.genruntimeconfig.cache
-/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/ref/paginaVideojuego.dll
-/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/bin/Debug/net5.0/paginaVideojuego
-/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/refint/paginaVideojuego.dll

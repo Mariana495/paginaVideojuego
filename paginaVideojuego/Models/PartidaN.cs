@@ -9,7 +9,7 @@ namespace paginaVideojuego.Models
     {
         public string NombreUsuario { get; set; }
         public double PuntajePartida { get; set; }
-        public double DuracionMinutosPartida { get; set; }
+        public double DuracionPartida { get; set; }
         public DateTime? FechaPartida { get; set; }
 
     }

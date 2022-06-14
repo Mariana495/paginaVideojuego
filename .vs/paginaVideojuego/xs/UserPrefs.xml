@@ -1,8 +1,14 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Records.cshtml">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="157" Column="1" />
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="79" Column="76" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="38" Column="1" />
+      <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="21" Column="46" />
+      <File FileName="paginaVideojuego/Models/UsuarioModel.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Models/PartidaN.cs" Line="12" Column="52" />
+      <File FileName="paginaVideojuego/Models/Partida.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Models/Usuario.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="20" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,13 +20,13 @@
                   <Node name="Npgsql.EntityFrameworkCore.PostgreSQL" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Records.cshtml" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

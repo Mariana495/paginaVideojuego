@@ -34,7 +34,13 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Records()
         {
-            var sql = "SELECT * FROM top100_partidas()";
+            var sql = @"SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida
+
+        FROM partidas AS part
+
+        INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario
+
+        ORDER BY part.puntaje_partida DESC LIMIT 100; ";
             var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
 
             return View(result);

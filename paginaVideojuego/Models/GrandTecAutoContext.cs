@@ -32,7 +32,7 @@ namespace paginaVideojuego.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Spanish_Mexico.1252");
+            modelBuilder.HasAnnotation("Relational:Collation", "en_US.UTF-8");
 
             modelBuilder.Entity<Partida>(entity =>
             {

@@ -76,7 +76,7 @@ namespace paginaVideojuego.Controllers
 
             
 
-            var sql = $"call agregar_usuario('{usuario.NombreUsuario}'::)";
+            var sql = $"call agregar_usuario('{usuario.NombreUsuario}, {usuario.ClaveUsuario}, {usuario.ContinenteUsuario}')";
 
             var random = new System.Random();
 
