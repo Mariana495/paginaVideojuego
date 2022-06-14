@@ -135,10 +135,14 @@ namespace paginaVideojuego.Controllers
                     code = EMPTY_CONTINENT
                 });
             }
-
+            
             usuario.NombreUsuario = editarUsuario.NombreUsuario;
             usuario.ClaveUsuario = editarUsuario.ClaveUsuario;
             usuario.ContinenteUsuario = editarUsuario.ContinenteUsuario;
+
+            var sql = @$"call editar_nombre('{id}, {editarUsuario.NombreUsuario}')
+                        call editar_clave('{id}, {editarUsuario.ClaveUsuario}')
+                        call editar_continente('{id}, {editarUsuario.ContinenteUsuario}')";
 
             database.SaveChanges();
 
@@ -155,7 +159,8 @@ namespace paginaVideojuego.Controllers
                 return NotFound();
             }
 
-            var sql = $"call eliminar_usuario('{usuario.NombreUsuario}'::)";
+            var sql = @$"call eliminar_partidas_usuario('{id}')
+                        call eliminar_usuario('{usuario.NombreUsuario}')";
 
             database.Usuarios.Remove(usuarios);
 
