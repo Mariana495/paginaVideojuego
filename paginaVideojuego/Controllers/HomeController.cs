@@ -36,24 +36,71 @@ namespace paginaVideojuego.Controllers
         {
             var sql = @"SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida
 
-        FROM partidas AS part
+                        FROM partidas AS part
 
-        INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario
+                        INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario
 
-        ORDER BY part.puntaje_partida DESC LIMIT 100; ";
+                        ORDER BY part.puntaje_partida DESC LIMIT 100; ";
             var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
 
             return View(result);
         }
 
-        public IActionResult Perfil()
+        public IActionResult Perfil(int id)
         {
-            return View();
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+
+            if (usuario == null)
+            {
+                TempData["Error"] = "No se encontró al usuario";
+                return RedirectToAction("Juega");
+            }
+
+            var sql = "SELECT * FROM top100_partidas_usuario(id)";
+
+            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
+
+            return View(result);
         }
 
-        public IActionResult EditarPerfil()
+        [HttpGet]
+        public IActionResult EditarPerfil(int id)
         {
-            return View();
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+
+            if(usuario == null)
+            {
+                TempData["Error"] = "No se encontró al usuario";
+                return RedirectToAction("Juega");
+            }
+
+            return View(usuario);
+        }
+
+        [HttpPost]
+        public IActionResult EditarPerfil(Usuario cambioDatosUsuario)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Hubo un error en el modelo";
+                return View(cambioDatosUsuario);
+            }
+
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == cambioDatosUsuario.IdUsuario);
+
+            if (usuario == null)
+            {
+                TempData["Error"] = "No se encontró registro del usuario al editar";
+                return RedirectToAction("Juega");
+            }
+
+            usuario.NombreUsuario = cambioDatosUsuario.NombreUsuario;
+            usuario.ClaveUsuario = cambioDatosUsuario.ClaveUsuario;
+            usuario.ContinenteUsuario = cambioDatosUsuario.ContinenteUsuario;
+
+            database.SaveChanges();
+
+            return RedirectToAction("Juega");
         }
 
         public IActionResult Login()

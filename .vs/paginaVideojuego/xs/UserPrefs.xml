@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Records.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Perfil.cshtml">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="79" Column="76" />
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="38" Column="1" />
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="162" Column="64" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="78" Column="1" />
       <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="21" Column="46" />
       <File FileName="paginaVideojuego/Models/UsuarioModel.cs" Line="1" Column="1" />
       <File FileName="paginaVideojuego/Models/PartidaN.cs" Line="12" Column="52" />
       <File FileName="paginaVideojuego/Models/Partida.cs" Line="1" Column="1" />
       <File FileName="paginaVideojuego/Models/Usuario.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="20" Column="36" />
+      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="18" Column="29" />
+      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Models/ErrorViewModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +27,7 @@
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True">
-                  <Node name="Records.cshtml" selected="True" />
+                  <Node name="Perfil.cshtml" selected="True" />
                 </Node>
               </Node>
             </Node>
