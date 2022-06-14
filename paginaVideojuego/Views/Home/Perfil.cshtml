@@ -18,27 +18,36 @@
   <h1 style = "text-align: center; color: #ffda33"> <b>Historial de partidas </b> </h1>  
   <br />
   <div class="centered">
-    <table class = "center" style = "width: 560px; font-size: 20px">
-        <tr style = "background-color: #00a1ff">
-            <th style = "text-align: center; color: black"> PUNTAJE </th>
-            <th style = "text-align: center; color: black"> DURACIÓN </th>
-            <th style = "text-align: center; color: black"> FECHA </th>
-        </tr>
-        <tr style = "color: white">
-            <td> 945 </td>
-            <td> 10:43 </td>
-            <td> 15-03-2022 </td>
-        </tr>
-        <tr style = "color: white">
-            <td> 921 </td>
-            <td> 10:05 </td>
-            <td> 11-01-2022 </td>
-        </tr>
-        <tr style = "color: white">
-            <td> 903 </td>
-            <td> 9:55 </td>
-            <td> 29-03-2022 </td>
-        </tr>
-    </table>
+      <table class="center" style="width: 560px; font-size: 20px">
+          <tr style="background-color: #00a1ff">
+              <th style="text-align: center; color: black"> PUNTAJE </th>
+              <th style="text-align: center; color: black"> DURACIÓN </th>
+              <th style="text-align: center; color: black"> FECHA </th>
+          </tr>
+
+          @foreach (var partida in Model.Partida){
+              <tr>
+                  <td> @partida.PuntajePartida </td>
+                  <td> @partida.DuracionMinutosPartida </td>
+                  <td> @partida.FechaPartida </td>
+              </tr>
+           }
+
+          <tr style="color: white">
+              <td> 945 </td>
+              <td> 10:43 </td>
+              <td> 15-03-2022 </td>
+          </tr>
+          <tr style="color: white">
+              <td> 921 </td>
+              <td> 10:05 </td>
+              <td> 11-01-2022 </td>
+          </tr>
+          <tr style="color: white">
+              <td> 903 </td>
+              <td> 9:55 </td>
+              <td> 29-03-2022 </td>
+          </tr>
+      </table>
   </div>
 </div>
