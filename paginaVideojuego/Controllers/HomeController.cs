@@ -103,6 +103,23 @@ namespace paginaVideojuego.Controllers
             return RedirectToAction("Juega");
         }
 
+        public IActionResult Delete(int id)
+        {
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+
+            if (usuario == null)
+            {
+                TempData["Error"] = "Usuario no encontrado al borrar";
+                return RedirectToAction("Juega");
+            }
+
+            database.Usuarios.Remove(usuario);
+
+            database.SaveChanges();
+
+            return RedirectToAction("Juega");
+        }
+
         public IActionResult Login()
         {
             //HttpContext.Session.SetString("username", "mar");
