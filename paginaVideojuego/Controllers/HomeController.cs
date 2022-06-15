@@ -26,19 +26,19 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Juega()
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
             return View();
         }
 
         public IActionResult Instrucciones()
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
             return View();
         }
 
         public IActionResult Records()
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
             var sql = @"SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida
 
                         FROM partidas AS part
@@ -51,9 +51,27 @@ namespace paginaVideojuego.Controllers
             return View(result);
         }
 
-        public IActionResult Perfil(int id)
+        public IActionResult Perfil()
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+
+            var sql = $"SELECT * FROM informacion_usuario(" + ViewData["IdUsuario"] + ")";
+            
+            var result = database.Usuarios.FromSqlRaw<Usuario>(sql).ToList();
+
+            if (result == null || result.Count < 1)
+            {
+                TempData["Error"] = "No se encontró al usuario";
+                return RedirectToAction("Juega");
+            }
+
+            return View(result[0]);
+        }
+
+        public IActionResult Resultados(int id)
+        {
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+            
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if (usuario == null)
@@ -64,7 +82,7 @@ namespace paginaVideojuego.Controllers
 
             var sql = "SELECT * FROM top100_partidas_usuario(id)";
 
-            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
+            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
 
             return View(result);
         }
@@ -72,7 +90,8 @@ namespace paginaVideojuego.Controllers
         [HttpGet]
         public IActionResult EditarPerfil(int id)
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if(usuario == null)
@@ -87,7 +106,8 @@ namespace paginaVideojuego.Controllers
         [HttpPost]
         public IActionResult EditarPerfil(Usuario cambioDatosUsuario)
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+           
             if (!ModelState.IsValid)
             {
                 TempData["Error"] = "Hubo un error en el modelo";
@@ -113,7 +133,8 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Delete(int id)
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+           
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if (usuario == null)
@@ -131,40 +152,47 @@ namespace paginaVideojuego.Controllers
 
         public IActionResult Login()
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
-            var random = new Random();
-
-            if(HttpContext.Session.GetString("NombreUsuario") == null)
-            {
-                HttpContext.Session.SetString("NombreUsuario", "CJ" + random.Next().ToString());
-            }
-            //HttpContext.Session.SetString("username", "mar");
-            //HttpContext.Session.SetInt32("username", "mar");
-
+  
             return View();
 
         }
 
         [HttpPost]
-        public IActionResult Login(Usuario usuario)
+        public IActionResult Login(Usuario usuario/*, bool iniciar_sesion*/)
         {
-            ViewData["NombreUsuario"] = HttpContext.Session.GetString("NombreUsuario");
+            
 
-            if (!ModelState.IsValid)
+            /*if (iniciar_sesion == true)
+            {*/
+
+            var usuario_id = database.Usuarios.SingleOrDefault(x => x.NombreUsuario == usuario.NombreUsuario && x.ClaveUsuario == usuario.ClaveUsuario);
+                
+                if (usuario_id == null)
+                {
+                    TempData["Error"] = "No coinciden los datos con el registro";
+                    return View(usuario);
+                }
+
+                HttpContext.Session.SetString("IdUsuario", $"('{usuario_id.IdUsuario}')");
+
+                ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+
+                return RedirectToAction("Juega");
+            /*}
+
+            else
             {
-                TempData["Error"] = "Faltan datos";
-                return View(usuario);
-            }
+                var usuario_nombre = database.Usuarios.SingleOrDefault(x => x.NombreUsuario == usuario.NombreUsuario);
 
-            var random = new System.Random();
+                if (usuario == null)
+                {
+                    var sql = $"call agregar_usuario('{usuario.NombreUsuario}, {usuario.ClaveUsuario}, {usuario.ContinenteUsuario}')";
+                }
 
-            usuario.IdUsuario = random.Next();
+                
 
-            database.Usuarios.Add(usuario);
-
-            database.SaveChanges();
-
-            return RedirectToAction("Juega");
+                return RedirectToAction("Juega");
+            }*/
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

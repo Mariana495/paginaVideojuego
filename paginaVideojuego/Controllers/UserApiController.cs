@@ -27,7 +27,7 @@ namespace paginaVideojuego.Controllers
         public string Get()
         {
             var NombreUsuario = HttpContext.Session.GetString("NombreUsuario");
-
+            
             if(NombreUsuario == null)
             {
                 return "no-session";
@@ -45,6 +45,8 @@ namespace paginaVideojuego.Controllers
         [HttpGet("{IdUsuario}")]
         public IActionResult Perfil(int id)
         {
+            Get();
+
             var usuario = database.Usuarios.SingleOrDefault(row => row.IdUsuario == id);
 
             if (usuario == null)

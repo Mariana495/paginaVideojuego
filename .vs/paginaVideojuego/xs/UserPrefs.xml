@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Records.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Controllers/UserApiController.cs">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="124" Column="1" />
-      <File FileName="paginaVideojuego/Startup.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="36" Column="22" />
-      <File FileName="paginaVideojuego/Views/Shared/_Layout.cshtml" Line="50" Column="26" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="164" Column="188" />
+      <File FileName="paginaVideojuego/Views/Shared/_Layout.cshtml" Line="35" Column="41" />
       <File FileName="paginaVideojuego/Views/Home/Juega.cshtml" Line="9" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="47" Column="6" />
-      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="50" Column="2" />
-      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="64" Column="2" />
-      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="37" Column="2" />
+      <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="41" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="12" Column="47" />
+      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="46" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="2" Column="1" />
+      <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Models/Usuario.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="82" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,13 +23,13 @@
                   <Node name="Npgsql.EntityFrameworkCore.PostgreSQL" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UserApiController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Records.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
             </Node>

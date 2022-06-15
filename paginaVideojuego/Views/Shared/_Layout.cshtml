@@ -31,9 +31,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Records">Records</a>
                         </li>
                         @{
-                            var NombreUsuario = (string)ViewData["NombreUsuario"];
+                            var IdUsuario = (string)ViewData["IdUsuario"];
+         
                         }
-                        @if (string.IsNullOrEmpty(NombreUsuario))
+                        @if (string.IsNullOrEmpty(IdUsuario))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>

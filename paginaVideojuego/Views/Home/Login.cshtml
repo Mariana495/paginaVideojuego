@@ -3,7 +3,7 @@
 <div class = "split left">
   <br /> <br /> <h1 style = "text-align: center; color: #005393"> <b> Ingresar </b> </h1> 
   <div class="centered">
-    <form method = "post">
+    <form method = "post" asp-action = "Login" asp-controller="Home"> 
         <h5> Nombre de usuario: </h5> 
         <input asp-for = "NombreUsuario" /> <br /> <br />
         <h5> Contraseña: </h5> 
@@ -23,7 +23,7 @@
     <table class = "center" style = "width: 560px; font-size: 20px">
         <tr style = "color: white">
             <td> 
-                <form method="post">
+                <form method="post" asp-action = "CrearUsuario" asp-controller="Home">
                     <h5> Nombre de usuario: </h5> 
                     <input asp-for = "NombreUsuario" /> <br /> <br />
                     <h5> Continente de origen </h5>
