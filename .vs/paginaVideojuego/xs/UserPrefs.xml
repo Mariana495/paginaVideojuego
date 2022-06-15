@@ -1,17 +1,14 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Controllers/UserApiController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Login.cshtml">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="164" Column="188" />
-      <File FileName="paginaVideojuego/Views/Shared/_Layout.cshtml" Line="35" Column="41" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="174" Column="37" />
+      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="6" Column="68" />
+      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="60" Column="1" />
+      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="159" Column="92" />
+      <File FileName="paginaVideojuego/Models/Usuario.cs" Line="6" Column="24" />
+      <File FileName="paginaVideojuego/Views/Shared/_Layout.cshtml" Line="34" Column="75" />
       <File FileName="paginaVideojuego/Views/Home/Juega.cshtml" Line="9" Column="1" />
       <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="41" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="12" Column="47" />
-      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="46" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="2" Column="1" />
-      <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Models/Usuario.cs" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="1" Column="1" />
-      <File FileName="paginaVideojuego/Controllers/UserApiController.cs" Line="82" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,13 +20,13 @@
                   <Node name="Npgsql.EntityFrameworkCore.PostgreSQL" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="UserApiController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Login.cshtml" selected="True" />
+                </Node>
                 <Node name="Shared" expanded="True" />
               </Node>
             </Node>

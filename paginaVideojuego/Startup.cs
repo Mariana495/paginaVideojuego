@@ -29,6 +29,8 @@ namespace paginaVideojuego
 
             services.AddDistributedMemoryCache();
 
+            services.AddMvc();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(6000);

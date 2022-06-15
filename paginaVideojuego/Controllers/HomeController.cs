@@ -24,6 +24,12 @@ namespace paginaVideojuego.Controllers
             _logger = logger;
         }
 
+        public const int EMPTY_NAME = 100;
+        public const int EMPTY_PASSWORD = 101;
+        public const int EMPTY_CONTINENT = 102;
+        public const int EXISTENT_NAME = 103;
+        public const int MISMATCHED_IDS = 104;
+
         public IActionResult Juega()
         {
             ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
@@ -126,22 +132,29 @@ namespace paginaVideojuego.Controllers
             usuario.ClaveUsuario = cambioDatosUsuario.ClaveUsuario;
             usuario.ContinenteUsuario = cambioDatosUsuario.ContinenteUsuario;
 
+            var sql = @$"call editar_nombre('{usuario.IdUsuario}, {cambioDatosUsuario.NombreUsuario}')
+                        call editar_clave('{usuario.IdUsuario}, {cambioDatosUsuario.ClaveUsuario}')
+                        call editar_continente('{usuario.IdUsuario}, {cambioDatosUsuario.ContinenteUsuario}')";
+
             database.SaveChanges();
 
             return RedirectToAction("Juega");
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete()
         {
             ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
            
-            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == int.Parse(HttpContext.Session.GetString("IdUsuario")));
 
             if (usuario == null)
             {
                 TempData["Error"] = "Usuario no encontrado al borrar";
                 return RedirectToAction("Juega");
             }
+
+            var sql = @$"call eliminar_partidas_usuario('{usuario.IdUsuario}')
+                        call eliminar_usuario('{usuario.NombreUsuario}')";
 
             database.Usuarios.Remove(usuario);
 
@@ -155,6 +168,43 @@ namespace paginaVideojuego.Controllers
   
             return View();
 
+        }
+
+        [HttpPost]
+        public IActionResult Create(Usuario usuario)
+        {
+            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
+            {
+                TempData["Error"] = "Nombre de usuario no registrado";
+                return RedirectToAction("Login");
+            }
+            
+
+            if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
+            {
+                TempData["Error"] = "Clave de usuario no registrado";
+                return RedirectToAction("Login");
+            }
+
+            if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
+            {
+                TempData["Error"] = "Continente de usuario no registrado";
+                return RedirectToAction("Login");
+            }
+
+
+
+            var sql = $"call agregar_usuario('{usuario.NombreUsuario}, {usuario.ClaveUsuario}, {usuario.ContinenteUsuario}')";
+
+            database.Usuarios.Add(usuario);
+
+            database.SaveChanges();
+
+            HttpContext.Session.SetString("IdUsuario", $"('{usuario.IdUsuario}')");
+
+            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+
+            return RedirectToAction("Juega");
         }
 
         [HttpPost]
@@ -172,7 +222,7 @@ namespace paginaVideojuego.Controllers
                     TempData["Error"] = "No coinciden los datos con el registro";
                     return View(usuario);
                 }
-
+                
                 HttpContext.Session.SetString("IdUsuario", $"('{usuario_id.IdUsuario}')");
 
                 ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
