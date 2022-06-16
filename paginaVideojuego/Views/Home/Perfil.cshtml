@@ -6,25 +6,27 @@
 }
 
 <div class="split left">
-  <div class="centered">
-    <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
-    <h2 style = "color: #0276ba"> @Model.NombreUsuario </h2>  
-    Continente: @Model.ContinenteUsuario <br/>
-    Desde: @Model.FechaIngresoUsuario <br/>
-    Minutos jugados: -- <br/><br/>
+    <div class="centered">
+        <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
+        <h2 style="color: #0276ba"> @Model.NombreUsuario </h2>
+        Continente: @Model.ContinenteUsuario <br />
+        Desde: @Model.FechaIngresoUsuario <br />
+        Minutos jugados: -- <br /><br />
 
-    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
-         <a asp-controller = "Home" asp-action = "EditarPerfil" asp-route-id = "@Model.IdUsuario" class="link-dark"> Editar perfil </a>
-    </button>
-
-    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
-         <a asp-controller = "Home" asp-action = "Delete" asp-route-id = "@Model.IdUsuario" class="link-dark"> Borrar perfil </a>
-    </button>
-
-    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
-         <a asp-controller = "Home" asp-action = "Resultados" asp-route-id = "@Model.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
-    </button>
-  </div>
+        <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
+            <a asp-controller="Home" asp-action="EditarPerfil" asp-route-id="@Model.IdUsuario" class="link-dark"> Editar perfil </a>
+        </button>
+        <br />
+        <br />
+        <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
+            <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.IdUsuario" class="link-dark"> Borrar perfil </a>
+        </button>
+        <br />
+        <br />
+        <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
+            <a asp-controller="Home" asp-action="Resultados" asp-route-id="@Model.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
+        </button>
+    </div>
 </div>
 
 <div class="split right">

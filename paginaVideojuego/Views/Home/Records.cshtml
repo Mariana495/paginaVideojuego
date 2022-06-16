@@ -12,13 +12,13 @@
             <th style = "text-align: center"> <h3> Fecha </h3> </th>
         </tr>
        @foreach(var user in Model){
-           <tr>
-                <td> @user.NombreUsuario </td>
-                <td> <label type ="number" step ="1">Number of tickets you would like to buy:</label></td>
-                <td> @user.PuntajePartida </td>
-                <td> @user.DuracionPartida </td>
-                <td> @user.FechaPartida </td>
-            </tr>
+    <tr>
+            <td> @user.NombreUsuario </td>
+
+            <td> @user.PuntajePartida </td>
+            <td> @user.DuracionPartida </td>
+            <td> @user.FechaPartida </td>
+    </tr>
        }
 
     </table> 
