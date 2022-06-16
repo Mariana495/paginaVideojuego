@@ -8,12 +8,12 @@
 </div>
 
 @section login {
-    @if(ViewData["NombreUsuario"] == null)
+    @if(ViewData["IdUsuario"] == null)
     {
-        <li> Login </li>
+        <h5> Para poder guardar tus partidas necesitas estar loggeado</h5>
     }
     else
     {
-        <li> Logout </li>
+        
     }
 }

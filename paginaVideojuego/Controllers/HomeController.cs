@@ -61,21 +61,33 @@ namespace paginaVideojuego.Controllers
         {
             ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
 
+            Perfil perfil = new Perfil();
+
             //var datos = int.Parse(HttpContext.Session.GetString("IdUsuario"));
 
-            var sql = @"SELECT usr.id_usuario, usr.nombre_usuario, usr.clave_usuario, usr.fecha_ingreso_usuario, usr.continente_usuario, (SELECT sum(part.duracion_minutos_partida) FROM partidas AS part WHERE part.id_usuario = " + ViewData["IdUsuario"] + ") as minutosjugados FROM usuarios as usr WHERE usr.id_usuario = " + ViewData["IdUsuario"] + ";";
-                //SELECT * FROM informacion_usuario (" + ViewData["IdUsuario"] + ")";
+            var sql = "SELECT usr.id_usuario, usr.nombre_usuario, usr.clave_usuario, usr.fecha_ingreso_usuario, usr.continente_usuario, (SELECT sum(part.duracion_minutos_partida) FROM partidas AS part WHERE part.id_usuario = " + ViewData["IdUsuario"] + ") as minutosjugados FROM usuarios as usr WHERE usr.id_usuario = " + ViewData["IdUsuario"] + ";";
+
+            var usuariosconminutos = database.UsuariosMJ.FromSqlRaw<UsuarioMJ>(sql).ToList();
+
+            var sql2 = "SELECT * FROM partidas WHERE id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
+
+            //SELECT * FROM informacion_usuario (" + ViewData["IdUsuario"] + ")";
 
             
-            var data = database.Usuarios.FromSqlRaw<Usuario>(sql).ToList();
 
-            if (data == null || data.Count < 1)
+            var minutos = database.Partidas.FromSqlRaw<Partida>(sql2).ToList();
+
+            if (usuariosconminutos == null || usuariosconminutos.Count < 1)
             {
                 TempData["Error"] = "No se encontró al usuario";
                 return RedirectToAction("Juega");
             }
 
-            return View(data[0]);
+            perfil.UsuarioRegistrado = usuariosconminutos[0];
+
+            perfil.PartidasJugadas = minutos;
+
+            return View(perfil);
         }
 
         public IActionResult Resultados(int id)
@@ -91,7 +103,7 @@ namespace paginaVideojuego.Controllers
             }
 
             var sql = "SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida FROM partidas AS part INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario WHERE usr.id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
-
+            
             var results = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
 
             return View(results);

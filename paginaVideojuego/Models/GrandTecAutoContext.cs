@@ -20,7 +20,7 @@ namespace paginaVideojuego.Models
         public virtual DbSet<Partida> Partidas { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<PartidaN> PartidasN { get; set; }
-        public virtual DbSet<UsuarioM> UsuariosM { get; set; }
+        public virtual DbSet<UsuarioMJ> UsuariosMJ { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -90,7 +90,38 @@ namespace paginaVideojuego.Models
                     .HasColumnName("nombre_usuario");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<UsuarioMJ>(entity =>
+            {
+                entity.HasKey(e => e.IdUsuario)
+                    .HasName("usuarios_pkey");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+
+                entity.Property(e => e.ClaveUsuario)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("clave_usuario");
+
+                entity.Property(e => e.ContinenteUsuario)
+                    .HasMaxLength(20)
+                    .HasColumnName("continente_usuario");
+
+                entity.Property(e => e.FechaIngresoUsuario)
+                    .HasColumnType("date")
+                    .HasColumnName("fecha_ingreso_usuario")
+                    .HasDefaultValueSql("CURRENT_DATE");
+
+                entity.Property(e => e.NombreUsuario)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasColumnName("nombre_usuario");
+
+                entity.Property(e => e.MinutosJugados)
+                    .HasColumnType("double")
+                    .HasColumnName("minutosjugados");
+            });
+
+                OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

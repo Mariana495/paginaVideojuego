@@ -1,4 +1,4 @@
-﻿@model Usuario
+﻿@model Perfil
 
 @{
     ViewData["Title"] = "Home Page";
@@ -8,23 +8,23 @@
 <div class="split left">
     <div class="centered">
         <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
-        <h2 style="color: #0276ba"> @Model.NombreUsuario </h2>
-        Continente: @Model.ContinenteUsuario <br />
-        Desde: @Model.FechaIngresoUsuario <br />
-        Minutos jugados: -- <br /><br />
+        <h2 style="color: #0276ba"> @Model.UsuarioRegistrado.NombreUsuario </h2>
+        Continente: @Model.UsuarioRegistrado.ContinenteUsuario <br />
+        Desde: @Model.UsuarioRegistrado.FechaIngresoUsuario <br />
+        Minutos jugados: @Model.UsuarioRegistrado.MinutosJugados <br /><br />
 
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
-            <a asp-controller="Home" asp-action="EditarPerfil" asp-route-id="@Model.IdUsuario" class="link-dark"> Editar perfil </a>
+            <a asp-controller="Home" asp-action="EditarPerfil" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Editar perfil </a>
         </button>
         <br />
         <br />
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
-            <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.IdUsuario" class="link-dark"> Borrar perfil </a>
+            <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Borrar perfil </a>
         </button>
         <br />
         <br />
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
-            <a asp-controller="Home" asp-action="Resultados" asp-route-id="@Model.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
+            <a asp-controller="Home" asp-action="Resultados" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
         </button>
     </div>
 </div>
@@ -40,29 +40,13 @@
               <th style="text-align: center; color: black"> FECHA </th>
           </tr>
 
-          @foreach (var partida in Model.Partida){
+          @foreach (var partida in Model.PartidasJugadas){
               <tr style="color: white">
                   <td> @partida.PuntajePartida </td>
                   <td> @partida.DuracionMinutosPartida </td>
                   <td> @partida.FechaPartida </td>
               </tr>
            }
-
-          <tr style="color: white">
-              <td> 945 </td>
-              <td> 10:43 </td>
-              <td> 15-03-2022 </td>
-          </tr>
-          <tr style="color: white">
-              <td> 921 </td>
-              <td> 10:05 </td>
-              <td> 11-01-2022 </td>
-          </tr>
-          <tr style="color: white">
-              <td> 903 </td>
-              <td> 9:55 </td>
-              <td> 29-03-2022 </td>
-          </tr>
       </table>
   </div>
 </div>
