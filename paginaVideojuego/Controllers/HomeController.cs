@@ -65,11 +65,11 @@ namespace paginaVideojuego.Controllers
 
             //var datos = int.Parse(HttpContext.Session.GetString("IdUsuario"));
 
-            var sql = "SELECT usr.id_usuario, usr.nombre_usuario, usr.clave_usuario, usr.fecha_ingreso_usuario, usr.continente_usuario, (SELECT sum(part.duracion_minutos_partida) FROM partidas AS part WHERE part.id_usuario = " + ViewData["IdUsuario"] + ") as minutosjugados FROM usuarios as usr WHERE usr.id_usuario = " + ViewData["IdUsuario"] + ";";
+            var sql = "SELECT usr.id_usuario, usr.nombre_usuario, usr.clave_usuario, usr.fecha_ingreso_usuario, usr.continente_usuario, (SELECT coalesce(sum(part.duracion_minutos_partida), 0) FROM partidas AS part WHERE part.id_usuario = " + ViewData["IdUsuario"] + ") as minutosjugados FROM usuarios as usr WHERE usr.id_usuario = " + ViewData["IdUsuario"] + ";";
 
             var usuariosconminutos = database.UsuariosMJ.FromSqlRaw<UsuarioMJ>(sql).ToList();
 
-            var sql2 = "SELECT * FROM partidas WHERE id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
+            var sql2 = "SELECT * FROM partidas WHERE id_usuario = " + ViewData["IdUsuario"] + " ORDER BY partidas.puntaje_partida DESC LIMIT 100;";
 
             //SELECT * FROM informacion_usuario (" + ViewData["IdUsuario"] + ")";
 
@@ -79,8 +79,8 @@ namespace paginaVideojuego.Controllers
 
             if (usuariosconminutos == null || usuariosconminutos.Count < 1)
             {
-                TempData["Error"] = "No se encontró al usuario";
-                return RedirectToAction("Juega");
+                ViewData["Error"] = "No se encontró al usuario";
+                return View("Login");
             }
 
             perfil.UsuarioRegistrado = usuariosconminutos[0];
@@ -90,24 +90,24 @@ namespace paginaVideojuego.Controllers
             return View(perfil);
         }
 
-        public IActionResult Resultados(int id)
-        {
-            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+        //public IActionResult Resultados(int id)
+        //{
+        //    ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
             
-            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
+        //    var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
-            if (usuario == null)
-            {
-                TempData["Error"] = "No se encontró al usuario";
-                return RedirectToAction("Juega");
-            }
+        //    if (usuario == null)
+        //    {
+        //        TempData["Error"] = "No se encontró al usuario";
+        //        return RedirectToAction("Juega");
+        //    }
 
-            var sql = "SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida FROM partidas AS part INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario WHERE usr.id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
+        //    var sql = "SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida FROM partidas AS part INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario WHERE usr.id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
             
-            var results = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
+        //    var results = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
 
-            return View(results);
-        }
+        //    return View(results);
+        //}
 
         [HttpGet]
         public IActionResult EditarPerfil(int id)
@@ -118,8 +118,8 @@ namespace paginaVideojuego.Controllers
 
             if(usuario == null)
             {
-                TempData["Error"] = "No se encontró al usuario";
-                return RedirectToAction("Juega");
+                ViewData["Error"] = "Usuario Invalido";
+                return View("Login");
             }
 
             return View(usuario);
@@ -132,25 +132,26 @@ namespace paginaVideojuego.Controllers
            
             if (!ModelState.IsValid)
             {
-                TempData["Error"] = "Hubo un error en el modelo";
-                return View(cambioDatosUsuario);
+                ViewData["ErrorEdicion"] = "Hubo un error en el modelo";
+                return View("Login");
             }
 
             var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == cambioDatosUsuario.IdUsuario);
 
-            if (usuario == null)
+            if (usuario == null || usuario.NombreUsuario.Length > 10)
             {
-                TempData["Error"] = "No se encontró registro del usuario al editar";
-                return RedirectToAction("Juega");
+                if (usuario.NombreUsuario.Length > 10)
+                {
+                    ViewData["ErrorEdicion"] = "Tu nombre debe de tener menos de 11 caracteres";
+                    return View("Login");
+                }
+                ViewData["ErrorEdicion"] = "No se encontró registro del usuario al editar";
+                return View("Login");
             }
 
             usuario.NombreUsuario = cambioDatosUsuario.NombreUsuario;
             usuario.ClaveUsuario = cambioDatosUsuario.ClaveUsuario;
             usuario.ContinenteUsuario = cambioDatosUsuario.ContinenteUsuario;
-
-            var sql = @$"call editar_nombre('{usuario.IdUsuario}, {cambioDatosUsuario.NombreUsuario}')
-                        call editar_clave('{usuario.IdUsuario}, {cambioDatosUsuario.ClaveUsuario}')
-                        call editar_continente('{usuario.IdUsuario}, {cambioDatosUsuario.ContinenteUsuario}')";
 
             database.SaveChanges();
 
@@ -165,8 +166,8 @@ namespace paginaVideojuego.Controllers
 
             if (usuario == null)
             {
-                TempData["Error"] = "Usuario no encontrado al borrar";
-                return RedirectToAction("Juega");
+                ViewData["Error"] = "Usuario no encontrado al borrar";
+                return View("Login");
             }
 
             var sql = @$"call eliminar_partidas_usuario('{usuario.IdUsuario}')
@@ -191,23 +192,28 @@ namespace paginaVideojuego.Controllers
         [HttpPost]
         public IActionResult Create(Usuario usuario)
         {
-            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
+            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0 || usuario.NombreUsuario.Length > 10)
             {
-                TempData["Error"] = "Nombre de usuario no registrado";
-                return RedirectToAction("Login");
+                if(usuario.NombreUsuario.Length > 10)
+                {
+                    ViewData["ErrorCreacion"] = "Tu nombre debe de tener menos de 11 caracteres";
+                    return View("Login");
+                }
+                ViewData["ErrorCreacion"] = "Nombre de usuario no registrado";
+                return View("Login");
             }
             
 
             if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
             {
-                TempData["Error"] = "Clave de usuario no registrado";
-                return RedirectToAction("Login");
+                ViewData["ErrorCreacion"] = "Clave de usuario no registrado";
+                return View("Login");
             }
 
             if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
             {
-                TempData["Error"] = "Continente de usuario no registrado";
-                return RedirectToAction("Login");
+                ViewData["ErrorCreacion"] = "Continente de usuario no registrado";
+                return View("Login");
             }
 
 
@@ -237,7 +243,7 @@ namespace paginaVideojuego.Controllers
                 
                 if (usuario_id == null)
                 {
-                    TempData["Error"] = "No coinciden los datos con el registro";
+                    ViewData["Error"] = "No coinciden los datos con el registro";
                     return View(usuario);
                 }
                 

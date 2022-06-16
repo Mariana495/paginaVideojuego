@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int ranking = 1;
+    double Minutos = Math.Round(@Model.UsuarioRegistrado.MinutosJugados, 2);
 }
 
 <div class="split left">
@@ -11,7 +13,7 @@
         <h2 style="color: #0276ba"> @Model.UsuarioRegistrado.NombreUsuario </h2>
         Continente: @Model.UsuarioRegistrado.ContinenteUsuario <br />
         Desde: @Model.UsuarioRegistrado.FechaIngresoUsuario <br />
-        Minutos jugados: @Model.UsuarioRegistrado.MinutosJugados <br /><br />
+        Minutos jugados: @Minutos <br /><br />
 
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
             <a asp-controller="Home" asp-action="EditarPerfil" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Editar perfil </a>
@@ -21,20 +23,21 @@
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
             <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Borrar perfil </a>
         </button>
-        <br />
+        @*<br />
         <br />
         <button style="background-color: #00a1ff" class="btn btn-lg" id="botonPerfil">
             <a asp-controller="Home" asp-action="Resultados" asp-route-id="@Model.UsuarioRegistrado.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
-        </button>
+        </button>*@
     </div>
 </div>
 
 <div class="split right">
   <h1 style = "text-align: center; color: #ffda33"> <b>Historial de partidas </b> </h1>  
   <br />
-  <div class="centered">
+  <div class="centered" style="bottom: -100px; overflow: scroll; border: solid 5px black">
       <table class="center" style="width: 560px; font-size: 20px">
           <tr style="background-color: #00a1ff">
+              <th style="text-align: center"> RANKING </th>
               <th style="text-align: center; color: black"> PUNTAJE </th>
               <th style="text-align: center; color: black"> DURACIÓN </th>
               <th style="text-align: center; color: black"> FECHA </th>
@@ -42,11 +45,13 @@
 
           @foreach (var partida in Model.PartidasJugadas){
               <tr style="color: white">
+                  <td>@ranking</td>
                   <td> @partida.PuntajePartida </td>
                   <td> @partida.DuracionMinutosPartida </td>
                   <td> @partida.FechaPartida </td>
               </tr>
-           }
+              ranking = ranking + 1;
+          }
       </table>
   </div>
 </div>
