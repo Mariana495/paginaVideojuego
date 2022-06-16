@@ -1,0 +1,30 @@
+﻿@model List<PartidaN>
+@{
+    int ranking = 1;
+}
+
+
+<h1 style="color: #0276ba; text-align: center"><b> TUS RÉCORDS </b></h1>
+
+<div class="centered">
+    <table class="center" style="width: 560px">
+        <tr style="background-color: #ff9300">
+            <th style="text-align: center"> <h3> Ranking   </h3> </th>
+            <th style="text-align: center"> <h3> Puntos </h3> </th>
+            <th style="text-align: center"> <h3> Tiempo </h3> </th>
+            <th style="text-align: center"> <h3> Fecha </h3> </th>
+        </tr>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td> @ranking </td>
+                <td> @user.PuntajePartida </td>
+                <td> @user.DuracionPartida </td>
+                <td> @user.FechaPartida </td>
+            </tr>
+            ranking = ranking + 1;
+        }
+
+    </table>
+</div>
