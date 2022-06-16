@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Models/GrandTecAutoContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Instrucciones.cshtml">
     <Files>
-      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="141" Column="70" />
+      <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="68" Column="192" />
       <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="9" Column="52" />
-      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="6" Column="63" />
-      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="16" Column="47" />
-      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/EditarPerfil.cshtml" Line="40" Column="25" />
+      <File FileName="paginaVideojuego/Views/Home/Perfil.cshtml" Line="14" Column="70" />
+      <File FileName="paginaVideojuego/Views/Home/Login.cshtml" Line="36" Column="80" />
       <File FileName="paginaVideojuego/Views/Home/Resultados.cshtml" Line="12" Column="13" />
       <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="1" Column="1" />
+      <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="33" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,12 +19,12 @@
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="GrandTecAutoContext.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Instrucciones.cshtml" selected="True" />
+                </Node>
                 <Node name="Shared" expanded="True" />
               </Node>
             </Node>
@@ -36,10 +37,7 @@
   <MonoDevelop.Ide.ItemProperties.paginaVideojuego PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/Controllers/HomeController.cs" relfile="paginaVideojuego/Controllers/HomeController.cs" line="151" column="1" />
-      <Breakpoint file="/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/Controllers/HomeController.cs" relfile="paginaVideojuego/Controllers/HomeController.cs" line="139" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
