@@ -185,3 +185,5 @@ C:/Users/hp/source/repos/paginaVideojuego4/paginaVideojuego/bin/Debug/net5.0/Sys
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/ref/paginaVideojuego.dll
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.pdb
 /Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.genruntimeconfig.cache
+/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/paginaVideojuego.csproj.AssemblyReference.cache
+/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/Debug/net5.0/Razor/Views/Home/Resultados.cshtml.g.cs

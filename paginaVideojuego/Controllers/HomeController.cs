@@ -52,26 +52,30 @@ namespace paginaVideojuego.Controllers
                         INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario
 
                         ORDER BY part.puntaje_partida DESC LIMIT 100; ";
-            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
+            var records = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();
 
-            return View(result);
+            return View(records);
         }
 
         public IActionResult Perfil()
         {
             ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
 
-            var sql = $"SELECT * FROM informacion_usuario(" + ViewData["IdUsuario"] + ")";
-            
-            var result = database.Usuarios.FromSqlRaw<Usuario>(sql).ToList();
+            //var datos = int.Parse(HttpContext.Session.GetString("IdUsuario"));
 
-            if (result == null || result.Count < 1)
+            var sql = @"SELECT usr.id_usuario, usr.nombre_usuario, usr.clave_usuario, usr.fecha_ingreso_usuario, usr.continente_usuario, (SELECT sum(part.duracion_minutos_partida) FROM partidas AS part WHERE part.id_usuario = " + ViewData["IdUsuario"] + ") as minutosjugados FROM usuarios as usr WHERE usr.id_usuario = " + ViewData["IdUsuario"] + ";";
+                //SELECT * FROM informacion_usuario (" + ViewData["IdUsuario"] + ")";
+
+            
+            var data = database.Usuarios.FromSqlRaw<Usuario>(sql).ToList();
+
+            if (data == null || data.Count < 1)
             {
                 TempData["Error"] = "No se encontró al usuario";
                 return RedirectToAction("Juega");
             }
 
-            return View(result[0]);
+            return View(data[0]);
         }
 
         public IActionResult Resultados(int id)
@@ -86,11 +90,11 @@ namespace paginaVideojuego.Controllers
                 return RedirectToAction("Juega");
             }
 
-            var sql = "SELECT * FROM top100_partidas_usuario(id)";
+            var sql = "SELECT usr.nombre_usuario as nombreusuario, part.puntaje_partida as puntajepartida, part.duracion_minutos_partida as duracionpartida, part.fecha_partida as fechapartida FROM partidas AS part INNER JOIN usuarios AS usr ON part.id_usuario = usr.id_usuario WHERE usr.id_usuario = " + ViewData["IdUsuario"] + " ORDER BY part.puntaje_partida DESC LIMIT 100;";
 
-            var result = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
+            var results = database.PartidasN.FromSqlRaw<PartidaN>(sql).ToList();;
 
-            return View(result);
+            return View(results);
         }
 
         [HttpGet]
@@ -141,11 +145,11 @@ namespace paginaVideojuego.Controllers
             return RedirectToAction("Juega");
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
+                ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
            
-            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == int.Parse(HttpContext.Session.GetString("IdUsuario")));
+            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
 
             if (usuario == null)
             {
@@ -159,6 +163,8 @@ namespace paginaVideojuego.Controllers
             database.Usuarios.Remove(usuario);
 
             database.SaveChanges();
+
+            HttpContext.Session.Clear();
 
             return RedirectToAction("Juega");
         }
@@ -227,7 +233,7 @@ namespace paginaVideojuego.Controllers
 
                 ViewData["IdUsuario"] = HttpContext.Session.GetString("IdUsuario");
 
-                return RedirectToAction("Juega");
+                return RedirectToAction("Perfil");
             /*}
 
             else

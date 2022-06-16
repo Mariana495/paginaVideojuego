@@ -20,6 +20,7 @@ namespace paginaVideojuego.Models
         public virtual DbSet<Partida> Partidas { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<PartidaN> PartidasN { get; set; }
+        public virtual DbSet<UsuarioM> UsuariosM { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

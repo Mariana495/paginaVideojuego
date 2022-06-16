@@ -15,7 +15,15 @@
 
     <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
          <a asp-controller = "Home" asp-action = "EditarPerfil" asp-route-id = "@Model.IdUsuario" class="link-dark"> Editar perfil </a>
-    </button> 
+    </button>
+
+    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
+         <a asp-controller = "Home" asp-action = "Delete" asp-route-id = "@Model.IdUsuario" class="link-dark"> Borrar perfil </a>
+    </button>
+
+    <button style = "background-color: #00a1ff" class = "btn btn-lg" id = "botonPerfil">
+         <a asp-controller = "Home" asp-action = "Resultados" asp-route-id = "@Model.IdUsuario" class="link-dark"> Ver Partidas Jugadas </a>
+    </button>
   </div>
 </div>
 
@@ -31,7 +39,7 @@
           </tr>
 
           @foreach (var partida in Model.Partida){
-              <tr>
+              <tr style="color: white">
                   <td> @partida.PuntajePartida </td>
                   <td> @partida.DuracionMinutosPartida </td>
                   <td> @partida.FechaPartida </td>

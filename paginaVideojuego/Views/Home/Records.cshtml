@@ -11,11 +11,10 @@
             <th style = "text-align: center"> <h3> Tiempo </h3> </th>
             <th style = "text-align: center"> <h3> Fecha </h3> </th>
         </tr>
-
        @foreach(var user in Model){
            <tr>
                 <td> @user.NombreUsuario </td>
-                <td> 1 </td>
+                <td> <label type ="number" step ="1">Number of tickets you would like to buy:</label></td>
                 <td> @user.PuntajePartida </td>
                 <td> @user.DuracionPartida </td>
                 <td> @user.FechaPartida </td>

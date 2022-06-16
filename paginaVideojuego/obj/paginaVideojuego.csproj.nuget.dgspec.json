@@ -14,7 +14,7 @@
         "outputPath": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/joseandreslozano/.nuget/NuGet/NuGet.Config"
+          "/Users/joseandreslozano/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

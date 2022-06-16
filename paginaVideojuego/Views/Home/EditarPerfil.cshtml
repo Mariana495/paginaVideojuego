@@ -1,12 +1,13 @@
-﻿
+﻿@model Usuario
+
 <div class="split left">
-  <div class="centered">
-    <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
-    <h2 style = "color: #0276ba"> usuario </h2>  
-    País: MÉXICO <br/>
-    Desde: 2022 <br/>
-    Minutos jugados: -- <br/><br/>
-  </div>
+    <div class="centered">
+        <img src="https://alumnes.org/wp-content/uploads/2017/06/fa-user-circle-o-c0a2bd7a.png" alt="User icon">
+        <h2 style="color: #0276ba"> @Model.NombreUsuario </h2>
+        Continente: @Model.ContinenteUsuario <br />
+        Desde: @Model.FechaIngresoUsuario <br />
+        Minutos jugados: -- <br /><br />
+    </div>
 </div>
 
 <div class="split right">
@@ -16,25 +17,50 @@
     <table class = "center" style = "width: 560px; font-size: 20px">
         <tr style = "color: white">
             <td> 
-                <form>
-                    <h5> Nombre de usuario: </h5> 
-                    <input type = "text" id = "newUsername"/> <br /> <br />
-                    <h5> País de origen: </h5> 
-                    <input type = "text" id = "country"/> <br /> <br />
+                <form method="post" asp-action="EditarPerfil">
+                    <h5> Nombre de usuario: </h5>
+                    <input type="text" asp-for="NombreUsuario" name="NombreUsuario" /> <br /> <br />
+                    <h5> Comntinente de origen: </h5>
+                    <input type="text" asp-for="ContinenteUsuario" name="ContinenteUsuario" /> <br /> <br />
+
+
+                    
+                    <h5> Nueva contraseña: </h5>
+                    <input type="password" id="newPassword" /> <br /> <br />
+                    <h5> Confirmar nueva contraseña: </h5>
+                    <input name="ClaveUsuario" type="password" id="newPassword2" onKeyUp="enableButton()" /> <br /> <br />
+
+                    <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" /><br />
+
+                    <input style="background-color: #00a1ff" class="btn btn-lg" id="button" type="submit" value="Guardar" /><br />
                 </form>
-            </td>
-            <td> 
-                <h5> Contraseña: </h5> 
-                <input type = "password" id = "password"/> <br /> <br />
-                <h5> Nueva contraseña: </h5> 
-                <input type = "password" id = "newPassword"/> <br /> <br />
-                <h5> Confirmar nueva contraseña: </h5> 
-                <input type = "password" id = "newPassword"/> <br /> <br />
+                
+
             </td>
         </tr>
     </table>
-    <button style = "background-color: #00a1ff" class = "btn btn-lg">
-         Guardar
-    </button>
+    
   </div>
 </div>
+
+<script type="text/javascript">
+
+    function enableButton()
+
+    {
+
+        var camp1 = document.getElementById('newPassword');
+        var camp2 = document.getElementById('newPassword2');
+        var boton = document.getElementById('button');
+
+        if (camp1.value != camp2.value) {
+
+            boton.disabled = true;
+        }else {
+            boton.disabled = false;
+        }
+    }
+
+
+
+</script>
