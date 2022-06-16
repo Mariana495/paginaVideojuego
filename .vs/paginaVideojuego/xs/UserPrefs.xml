@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{3BF11591-FAE0-431E-954C-C14CD8752C10}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Views/Home/Instrucciones.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="paginaVideojuego/Models/Perfil.cs">
     <Files>
       <File FileName="paginaVideojuego/Controllers/HomeController.cs" Line="68" Column="192" />
       <File FileName="paginaVideojuego/Views/Home/Records.cshtml" Line="9" Column="52" />
@@ -9,6 +9,7 @@
       <File FileName="paginaVideojuego/Views/Home/Resultados.cshtml" Line="12" Column="13" />
       <File FileName="paginaVideojuego/Models/GrandTecAutoContext.cs" Line="1" Column="1" />
       <File FileName="paginaVideojuego/Views/Home/Instrucciones.cshtml" Line="33" Column="9" />
+      <File FileName="paginaVideojuego/Models/Perfil.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,12 +20,12 @@
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Perfil.cs" selected="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Instrucciones.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
             </Node>
