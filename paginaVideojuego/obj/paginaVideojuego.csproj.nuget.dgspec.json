@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {}
+    "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {}
   },
   "projects": {
-    "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {
+    "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
+        "projectUniqueName": "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
         "projectName": "paginaVideojuego",
-        "projectPath": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
-        "packagesPath": "/Users/joseandreslozano/.nuget/packages/",
-        "outputPath": "/Users/joseandreslozano/Desktop/Git_Página/pagina_videojuego/paginaVideojuego/paginaVideojuego/obj/",
+        "projectPath": "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/paginaVideojuego.csproj",
+        "packagesPath": "/Users/emilio/.nuget/packages/",
+        "outputPath": "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/joseandreslozano/.config/NuGet/NuGet.Config"
+          "/Users/emilio/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -69,12 +69,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[5.0.16, 5.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

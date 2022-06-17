@@ -3,17 +3,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1> Aquí se verá el juego. </h1>
+<div class="container">
+    <iframe style="width: 90%" src="/game/index.html"> </iframe>
 </div>
+
+
 
 @section login {
     @if(ViewData["IdUsuario"] == null)
     {
-        <h5> Para poder guardar tus partidas necesitas estar loggeado</h5>
+        <h5> Para poder guardar tus partidas necesitas iniciar una sesión</h5>
     }
     else
     {
         
     }
 }
+

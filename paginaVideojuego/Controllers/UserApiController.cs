@@ -1,187 +1,106 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using paginaVideojuego.Models;
 using System.Linq;
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace paginaVideojuego.Controllers
 {
+    [ApiController]
+    [Route("api/user")]
     public class UserApiController : Controller
     {
-        // GET: UserApiController
-        static List<UsuarioModel> jugadores = new List<UsuarioModel>();
-        
-        private readonly GrandTecAutoContext database;
 
-        public const int EMPTY_NAME = 100;
-        public const int EMPTY_PASSWORD = 101;
-        public const int EMPTY_CONTINENT = 102;
-        public const int EXISTENT_NAME = 103;
-        public const int MISMATCHED_IDS = 104;
+        private readonly GrandTecAutoContext database;
 
         public UserApiController(GrandTecAutoContext database)
         {
             this.database = database;
         }
 
-        public string Get()
-        {
-            var NombreUsuario = HttpContext.Session.GetString("NombreUsuario");
-            
-            if(NombreUsuario == null)
-            {
-                return "no-session";
-            }
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    if (string.IsNullOrEmpty(HttpContext.Session.GetString("IdUsuario")))
+        //    {
 
-            return NombreUsuario;
-        }
+        //        return Ok("{ idUsuario = 999, nombreUsuario = 'sinsesion' }");
+        //    }
+        //    else
+        //    {
+        //        int playerId = Int32.Parse(HttpContext.Session.GetString("IdUsuario"));
+        //        var nombreUsuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == playerId);
+
+        //        if (nombreUsuario != null)
+        //        {
+        //            return Ok("{ idUsuario = 999, nombreUsuario = 'sinsesion' }");
+        //        }
+
+        //        return Ok("{ idUsuario = 999, nombreUsuario = 'sinsesion' }");
+        //    }
+        //}
 
         [HttpGet]
-        public IEnumerable<Usuario> Records()
+        public IActionResult Get()
         {
-            return database.Usuarios.ToList();
-        }
-
-        [HttpGet("{IdUsuario}")]
-        public IActionResult Perfil(int id)
-        {
-            Get();
-
-            var usuario = database.Usuarios.SingleOrDefault(row => row.IdUsuario == id);
-
-            if (usuario == null)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("IdUsuario")))
             {
-                return NotFound();
-            }
 
-            return Ok(usuario);
+                return Ok(new UsuarioJuego { idUsuario = 999, nombreUsuario = "sinsesion" });
+            }
+            else
+            {
+                int playerId = Int32.Parse(HttpContext.Session.GetString("IdUsuario"));
+                var nombreUsuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == playerId);
+
+                if (nombreUsuario != null)
+                {
+                    return Ok(new UsuarioJuego { idUsuario = 999, nombreUsuario = "sinsesion" });
+                }
+
+                return Ok(new UsuarioJuego { idUsuario = 999, nombreUsuario = "sinsesion" });
+            }
         }
 
-        // POST: UserApiController/Create
+        //[HttpGet]
+        //public UsuarioJuego Get()
+        //{
+        //    if (string.IsNullOrEmpty(HttpContext.Session.GetString("IdUsuario")))
+        //    {
+
+        //        return new UsuarioJuego {idUsuario =  999, nombreUsuario = "sinsesion" }; 
+        //    }
+        //    else
+        //    {
+        //        int playerId = Int32.Parse(HttpContext.Session.GetString("IdUsuario")); 
+        //        var nombreUsuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == playerId);
+
+        //        if (nombreUsuario != null) 
+        //        {
+        //            return new UsuarioJuego { idUsuario = 999, nombreUsuario = "sinsesion" };
+        //        }
+
+        //        return new UsuarioJuego { idUsuario = 999, nombreUsuario = "sinsesion" };
+        //    }
+        //}
+
+
         [HttpPost]
-        public IActionResult Create([FromBody] Usuario usuario)
+        public IActionResult Post([FromBody] PartidaJuego partida)
         {
-            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty name",
-                    code = EMPTY_NAME
-                });
-            }
-
-            if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty password",
-                    code = EMPTY_PASSWORD
-                });
-            }
-
-            if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty continent",
-                    code = EMPTY_CONTINENT
-                });
-            }
-
-            
-
-            var sql = $"call agregar_usuario('{usuario.NombreUsuario}, {usuario.ClaveUsuario}, {usuario.ContinenteUsuario}')";
-
-            var random = new System.Random();
-
-            usuario.IdUsuario = random.Next();
-
-            database.Usuarios.Add(usuario);
-
-            database.SaveChanges();
-
+            database.Database.ExecuteSqlRaw($"call agregar_partida('{partida.puntajePartida}', '{partida.duracionPartida}', '{partida.idUsuario}')");
             return Ok();
         }
 
-        // PUT: UserApiController/Edit/5
-        [HttpPut("{IdUsuario}")]
-        public IActionResult Edit(int id, [FromBody] Usuario editarUsuario)
-        {
-            if (editarUsuario.IdUsuario != id)
-            {
-                return BadRequest(new
-                {
-                    error = "Las Id no coinciden",
-                    code = MISMATCHED_IDS
-                });
-            }
-
-            var usuario = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
-
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            if (usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty name",
-                    code = EMPTY_NAME
-                });
-            }
-
-            if (usuario.ClaveUsuario == null || usuario.ClaveUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty password",
-                    code = EMPTY_PASSWORD
-                });
-            }
-
-            if (usuario.ContinenteUsuario == null || usuario.ContinenteUsuario.Trim().Length == 0)
-            {
-                return BadRequest(new
-                {
-                    error = "Empty continent",
-                    code = EMPTY_CONTINENT
-                });
-            }
-            
-            usuario.NombreUsuario = editarUsuario.NombreUsuario;
-            usuario.ClaveUsuario = editarUsuario.ClaveUsuario;
-            usuario.ContinenteUsuario = editarUsuario.ContinenteUsuario;
-
-            var sql = @$"call editar_nombre('{id}, {editarUsuario.NombreUsuario}')
-                        call editar_clave('{id}, {editarUsuario.ClaveUsuario}')
-                        call editar_continente('{id}, {editarUsuario.ContinenteUsuario}')";
-
-            database.SaveChanges();
-
-            return Ok();
-        }
-
-        [HttpDelete("{IdUsuario}")]
-        public IActionResult Delete(int id, [FromBody] Usuario usuario)
-        {
-            var usuarios = database.Usuarios.SingleOrDefault(x => x.IdUsuario == id);
-
-            if (usuarios == null)
-            {
-                return NotFound();
-            }
-
-            var sql = @$"call eliminar_partidas_usuario('{id}')
-                        call eliminar_usuario('{usuario.NombreUsuario}')";
-
-            database.Usuarios.Remove(usuarios);
-
-            database.SaveChanges();
-
-            return Ok();
-        }
-
+        //[HttpPost]
+        //public void Post([FromBody] string partidaString)
+        //{
+        //    PartidaJuego partida = JsonSerializer.Deserialize<PartidaJuego>(partidaString);
+        //    database.Database.ExecuteSqlRaw($"call agregar_partida('{partida.puntajePartida}', '{partida.duracionPartida}', '{partida.idUsuario}')");
+        //}
     }
 }

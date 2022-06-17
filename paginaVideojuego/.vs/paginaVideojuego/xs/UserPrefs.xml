@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{7302D3FD-E107-401C-8246-E1286D136049}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Juega.cshtml">
+    <Files>
+      <File FileName="Controllers/UserApiController.cs" Line="104" Column="12" />
+      <File FileName="Models/UsuarioJuego (copy).cs" Line="1" Column="37" />
+      <File FileName="Models/EmptyCSharpFile.cs" Line="8" Column="1" />
+      <File FileName="Models/GrandTecAutoContext.cs" Line="30" Column="91" />
+      <File FileName="Views/Home/Juega.cshtml" Line="23" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="paginaVideojuego" expanded="True">
+            <Node name="paginaVideojuego" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True">
+                  <Node name="Juega.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.paginaVideojuego PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/Controllers/UserApiController.cs" relfile="Controllers/UserApiController.cs" line="29" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -17,13 +17,23 @@
                 <form method="post" asp-action="EditarPerfil">
                     <h5> Nombre de usuario: </h5>
                     <input type="text" asp-for="NombreUsuario" name="NombreUsuario" /> <br /> <br />
-                    <h5> Comntinente de origen: </h5>
-                    <input type="text" asp-for="ContinenteUsuario" name="ContinenteUsuario" /> <br /> <br />
 
+                    <h5> Continente de origen </h5>
+                    <select asp-for="ContinenteUsuario" style="margin-bottom: 15px">
+                        <optgroup label="Continentes">
+                            <option value="Norteamérica">Norteamérica</option>
+                            <option value="Centroamérica">Centroamérica</option>
+                            <option value="Sudamérica">Sudamérica</option>
+                            <option value="África">África</option>
+                            <option value="Oceanía">Oceanía</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Antártida">Antártida</option>
+                        </optgroup>
+                    </select>
 
-                    
                     <h5> Nueva contraseña: </h5>
                     <input type="password" id="newPassword" /> <br /> <br />
+
                     <h5> Confirmar nueva contraseña: </h5>
                     <input name="ClaveUsuario" type="password" id="newPassword2" onKeyUp="enableButton()" /> <br /> <br />
 
@@ -33,11 +43,11 @@
                     @{
                         if (ViewData["ErrorEdicion"] != null)
                         {
-                <div style="margin: 20px" class="alert alert-danger">
-                    @ViewData["ErrorEdicion"]
-                </div>
-                            }
+                            <div style="margin: 20px" class="alert alert-danger">
+                                @ViewData["ErrorEdicion"]
+                            </div>
                         }
+                    }
                 </form>
                 
 
