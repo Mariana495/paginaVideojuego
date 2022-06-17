@@ -8,8 +8,8 @@ namespace paginaVideojuego.Models
     public class PartidaJuego
     {
         public int idUsuario { get; set; }
-        public float puntajePartida { get; set; }
-        public float duracionPartida { get; set; }
+        public double puntajePartida { get; set; }
+        public double duracionPartida { get; set; }
     }
 }
 

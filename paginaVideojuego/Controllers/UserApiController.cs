@@ -94,7 +94,7 @@ namespace paginaVideojuego.Controllers
         {
             database.Database.ExecuteSqlRaw($"call agregar_partida('{partida.puntajePartida}', '{partida.duracionPartida}', '{partida.idUsuario}')");
             return Ok();
-        }
+        } 
 
         //[HttpPost]
         //public void Post([FromBody] string partidaString)

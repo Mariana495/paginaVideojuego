@@ -173,14 +173,14 @@ namespace paginaVideojuego.Controllers
         [HttpPost]
         public IActionResult Create(Usuario usuario)
         {
-            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0 || usuario.NombreUsuario.Length > 10)
+            if (usuario == null || usuario.NombreUsuario == null || usuario.NombreUsuario.Trim().Length == 0)
             {
                 
                 ViewData["ErrorCreacion"] = "Nombre de usuario no registrado";
                 return View("Login");
             }
 
-            if (usuario.NombreUsuario.Length > 10)
+            if (usuario.NombreUsuario.Length > 10 )
             {
                 ViewData["ErrorCreacion"] = "Tu nombre debe de tener menos de 11 caracteres";
                 return View("Login");

@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{7302D3FD-E107-401C-8246-E1286D136049}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Juega.cshtml">
     <Files>
-      <File FileName="Controllers/UserApiController.cs" Line="104" Column="12" />
-      <File FileName="Models/UsuarioJuego (copy).cs" Line="1" Column="37" />
-      <File FileName="Models/EmptyCSharpFile.cs" Line="8" Column="1" />
-      <File FileName="Models/GrandTecAutoContext.cs" Line="30" Column="91" />
       <File FileName="Views/Home/Juega.cshtml" Line="23" Column="1" />
+      <File FileName="Controllers/UserApiController.cs" />
+      <File FileName="Models/GrandTecAutoContext.cs" />
+      <File FileName="Views/Shared/_Layout.cshtml" />
+      <File FileName="wwwroot/css/site.css" />
+      <File FileName="Controllers/HomeController.cs" />
+      <File FileName="Models/PartidaJuego.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,9 +33,7 @@
   <MonoDevelop.Ide.ItemProperties.paginaVideojuego PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/Controllers/UserApiController.cs" relfile="Controllers/UserApiController.cs" line="29" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

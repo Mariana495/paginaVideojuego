@@ -14,7 +14,7 @@
         "outputPath": "/Users/emilio/Desktop/paginaVideojuego/paginaVideojuego/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/emilio/.nuget/NuGet/NuGet.Config"
+          "/Users/emilio/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
